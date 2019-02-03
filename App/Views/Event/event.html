@@ -1,0 +1,48 @@
+{{include file='..\Shared\layout_header.html'}}
+
+<div class="container card mx-auto m-5">
+    <div class="card-header">
+       <h2 class="text-center"> ADD EVENT </h2>
+    </div>
+    <div class="card-body">
+    <form action="/event/post" method="post">
+    <div class="row form-group">
+        <div class="col">
+            <label class="control-label" >Name:</label>
+        </div>
+        <div class="col">
+            <input class="form-control" type="text"  value="{{if isset($eventError->name)}}{{$eventError->name}}{{/if}}" name="name"/>
+        </div>
+    </div>
+    <div class="row form-group float-right">
+       <button class="btn btn-dark mx-auto" type="submit">Add</button>
+    </div>
+</form>
+
+
+    </div>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{foreach from=$events item=item}}
+        <tr>
+            <td>{{$item->name}}</td>
+            <td>
+                <a href="event/delete?id={{$item->id}}" class="btn btn-info btn-lg">
+                    <i class="fa fa-trash-o"></i> Delete
+                </a>
+            </td>
+        </tr>
+        {{/foreach}}
+        </tbody>
+    </table>
+
+</div>
+
+{{include file='..\Shared\layout_footer.html'}}

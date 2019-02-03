@@ -1,0 +1,40 @@
+{{include file='..\Shared\layout_header.html'}}
+
+<div class="container card mx-auto m-5">
+    <div class="card-header">
+        <h2 class="text-center"> LOGIN </h2>
+    </div>
+    <div class="card-body">
+    <form action="/login/post" method="post">
+
+        <div class="row form-group">
+            <div class="col">
+                <label>Email </label>
+            </div>
+            <div class="col">
+                <input class="form-control" type="email" name="email" required placeholder="email"/>
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col">
+                <label> Password</label>
+            </div>
+            <div class="col">
+                <input class="form-control" type="password" name="password" required minlength=6 />
+            </div>
+        </div>
+
+        {{if isset($session_errors) }}
+        <div class="alert alert-danger">
+            {{$session_errors}}
+        </div>
+        {{/if}}
+
+        <button class="btn btn-dark" type="submit"> Login in </button>
+    </form>
+</div>
+</div>
+
+{{include file='..\Shared\layout_footer.html'}}
+

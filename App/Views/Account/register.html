@@ -1,0 +1,91 @@
+{{include file='..\Shared\layout_header.html'}}
+
+<div class="container card mx-auto m-5">
+    <div class="card-header">
+       <h2 class="text-center"> REGISTER </h2>
+    </div>
+    <div class="card-body">
+    <form action="/register/post" method="post">
+    <div class="row form-group">
+        <div class="col">
+            <label class="control-label" >Username</label>
+        </div>
+        <div class="col">
+            <input class="form-control" type="text"  value="{{if isset($user->username)}}{{$user->username}}{{/if}}" name="username"/>
+        </div>
+    </div>
+    <div class="row form-group">
+        <div class="col">
+            <label class="control-label">FirstName</label>
+        </div>
+        <div class="col">
+            <input class="form-control" value="{{if isset($user->firstname)}}{{$user->firstname}}{{/if}}" type="text" name="firstname"/>
+        </div>
+    </div>
+    <div class="row form-group">
+        <div class="col">
+            <label class="control-label" >LastName</label>
+        </div>
+        <div class="col">
+            <input class="form-control" value="{{if isset($user->lastname)}}{{$user->lastname}}{{/if}}" type="text" name="lastname"/>
+        </div>
+    </div>
+
+
+    <div class="row form-group">
+        <div class="col">
+            <label class="control-label">Email</label>
+        </div>
+        <div class="col">
+            <input class="form-control" type="email" name="email" required value="{{if isset($user->email)}}{{$user->email}}{{/if}}"/>
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <div class="col">
+            <label class="control-label"> Password</label>
+        </div>
+        <div class="col">
+            <input class="form-control" type="password" name="password" required minlength=6 />
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <div class="col">
+            <label class="control-label"> RepeatPassword</label>
+        </div>
+        <div class="col">
+            <input class="form-control" type="password" name="repeatpassword" required minlength=6 />
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <div class="col">Gender</div>
+        <div class="col">
+       <label>Male</label>  <input class="" type="radio" name="gender"  value="1" {{if isset($user->gender) && $user->gender == 1 }} checked  {{/if}} />
+       <label>Female</label> <input class="" type="radio" name="gender" value="2" {{if isset($user->gender) && $user->gender == 2 }} checked  {{/if}}  />
+        </div>
+        </div>
+        <div class="row form-group">
+            <div class="col">
+                <label class="control-label"> Birthday</label>
+            </div>
+            <div class="col">
+        <input class="form-control" type="date" name="birthday" value="{{if isset($user->birthday)}}{{$user->birthday}}{{/if}}" required />
+    </div>
+        </div>
+    <button class="btn btn-dark mx-auto" type="submit"> Sign in </button>
+</form>
+
+    {{if isset($session_errors) }}
+    <div class="alert alert-danger">
+        {{$session_errors}}
+    </div>
+    {{/if}}
+
+</br>
+<div > If you are allready reagistered please login <a href="login"> aici </a> </div>
+    </div>
+</div>
+
+{{include file='..\Shared\layout_footer.html'}}
